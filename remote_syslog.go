@@ -107,7 +107,9 @@ func (s *Server) tailOne(file, tag string, whence int) {
 		return
 	}
 
-	if tag == "" {
+	if tag == "@fullpath" {
+		tag = path.Join(file)
+	} else if tag == "" {
 		tag = path.Base(file)
 	}
 
